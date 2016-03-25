@@ -27,12 +27,17 @@ using namespace std;
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	time_duration td = duration_from_string("1:20:30:001");
-	cout << td;
 	return 0;
 }
 
-void test3() {
+void chapter1_4() 
+{
+	time_duration td = duration_from_string("1:20:30:001");
+	cout << td;
+}
+
+void chapter1_3() 
+{
 	gregorian::date d1;
 	gregorian::date d2(gregorian::from_string("2016/03/24"));
 	gregorian::date d3(gregorian::neg_infin);
@@ -56,7 +61,7 @@ void test3() {
 	assert(dp1.begin().day() == 8);
 }
 
-void test2()
+void chapter1_2()
 {
 	std::vector<string> v(100000);
 	std::ofstream fs("d:/text.txt");
@@ -71,7 +76,7 @@ void test2()
 	}
 }
 
-void test1()
+void chapter1_1()
 {
 	timer t;
 	cout <<"max timespan:" << t.elapsed_max()/3600 << "h" <<endl;
