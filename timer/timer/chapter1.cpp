@@ -1,6 +1,3 @@
-// timer.cpp : 定义控制台应用程序的入口点。
-//
-
 #include "stdafx.h"
 #include "chapter1.h"
 #include <iostream>
