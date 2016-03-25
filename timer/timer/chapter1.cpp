@@ -2,6 +2,7 @@
 //
 
 #include "stdafx.h"
+#include "chapter1.h"
 #include <iostream>
 #include <ostream>
 #include<fstream>
@@ -9,12 +10,7 @@
 #include <boost/timer.hpp>
 #include <boost/progress.hpp>
 
-#define BOOST_DATE_TIME_SOURCE
-#include <libs/date_time/src/gregorian/greg_names.hpp>
-#include <libs/date_time/src/gregorian/date_generators.cpp>
-#include <libs/date_time/src/gregorian/greg_month.cpp>
-#include <libs/date_time/src/gregorian/greg_weekday.cpp>
-#include <libs/date_time/src/gregorian/gregorian_types.cpp>
+
 
 #include <boost/date_time/gregorian/gregorian.hpp>
 using namespace boost::gregorian;
@@ -22,21 +18,19 @@ using namespace boost::gregorian;
 #include <boost/date_time/posix_time/posix_time.hpp>
 using namespace boost::posix_time;
 
+#include <boost/smart_ptr.hpp>
+
 using namespace boost;
 using namespace std;
+using namespace chapter1;
 
-int _tmain(int argc, _TCHAR* argv[])
-{
-	return 0;
-}
-
-void chapter1_4() 
+void chapter1::demo_time_duration()
 {
 	time_duration td = duration_from_string("1:20:30:001");
 	cout << td;
 }
 
-void chapter1_3() 
+void chapter1::demo_date()
 {
 	gregorian::date d1;
 	gregorian::date d2(gregorian::from_string("2016/03/24"));
@@ -61,7 +55,7 @@ void chapter1_3()
 	assert(dp1.begin().day() == 8);
 }
 
-void chapter1_2()
+void chapter1::demo_progress_display()
 {
 	std::vector<string> v(100000);
 	std::ofstream fs("d:/text.txt");
@@ -76,7 +70,7 @@ void chapter1_2()
 	}
 }
 
-void chapter1_1()
+void chapter1::demo_progress_timer()
 {
 	timer t;
 	cout <<"max timespan:" << t.elapsed_max()/3600 << "h" <<endl;
