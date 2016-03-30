@@ -2,7 +2,7 @@
 #include "chapter1.h"
 #include "chapter2.h"
 #include "chapter4.h"
-
+#include "chapter5.h"
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -19,7 +19,10 @@ int _tmain(int argc, _TCHAR* argv[])
 	//chapter4::demo_tribool();
 	//chapter4::demo_operator();
 	//chapter4::demo_exception();
-	chapter4::demo_uuid();
+	//chapter4::demo_uuid();
+
+
+	chapter5::demo_lexical_cast();
 
 	return 0;
 }
