@@ -29,4 +29,6 @@ namespace chapter5
 	void demo_lexical_cast();
 
 	void demo_format();
+
+	void demo_string_algo();
 }

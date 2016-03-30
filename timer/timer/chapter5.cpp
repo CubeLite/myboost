@@ -15,6 +15,7 @@
 
 #include <boost/lexical_cast.hpp>
 #include <boost/format.hpp>
+#include <boost/algorithm/string.hpp>
 using namespace boost;
 
 using namespace std;
@@ -61,4 +62,35 @@ void chapter5::demo_format()
 	fmt %2 %5;
 	fmt %((2+5)*5);
 	cout << fmt.str() << endl;
+}
+
+void chapter5::demo_string_algo()
+{
+	string str("readme.txt");
+	if (ends_with(str, "txt"))
+	{
+		cout << to_upper_copy(str) + " UPPER" << endl;
+		assert(ends_with(str, "txt"));
+	}
+
+	replace_first(str, "readme", "followme");
+	cout << str << endl;
+
+	string str2 = erase_first_copy(str, "txt");
+	cout << str2 << endl;
+
+	string strx("Power Bomb");
+	assert(iends_with(strx, "bomb"));
+	assert(!ends_with(strx, "bomb"));
+
+	assert(starts_with(strx, "Pow"));
+	assert(contains(strx, "er"));
+
+	string strx2 = to_lower_copy(strx);
+	assert(iequals(strx, strx2));
+
+	string strx3("power suit");
+	assert(ilexicographical_compare(strx, strx3));
+
+	assert(all(strx2.substr(0, 5), is_lower()));
 }
