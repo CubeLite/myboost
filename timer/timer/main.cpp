@@ -18,7 +18,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	//chapter4::demo_assign();
 	//chapter4::demo_tribool();
 	//chapter4::demo_operator();
-	chapter4::demo_exception();
+	//chapter4::demo_exception();
+	chapter4::demo_uuid();
 
 	return 0;
 }

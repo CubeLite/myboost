@@ -17,6 +17,11 @@ using namespace boost;
 #include <boost/assign.hpp>
 using namespace boost::assign;
 
+#include <boost/uuid/uuid.hpp>
+#include <boost/uuid/uuid_generators.hpp>
+#include <boost/uuid/uuid_io.hpp>
+using namespace boost::uuids;
+
 using namespace std;
 using namespace chapter4;
 
@@ -176,3 +181,25 @@ void chapter4::demo_exception()
 		cout << *get_error_info<ErrStr>(e) << endl;
 	}
 }
+
+void chapter4::demo_uuid()
+{
+	uuid u = nil_uuid();
+	assert(uuid::static_size() == 16);
+	cout << u << endl;
+
+	string_generator sgen;
+	uuid u1 = sgen("1023456789abcdef0123456789abcdef");
+	cout << u1 << endl;
+
+	uuid u2 = sgen("10234567-89ab-cdef-0123-456789abcdef");
+	cout << u2 << endl;
+
+	uuid u3 = sgen(L"{10234567-89ab-cdef-0123-456789abcdef}");
+	cout << u3 << endl;
+
+	random_generator rgen;
+	uuid u4 = rgen();
+	cout << u4 << endl;
+}
+

@@ -81,5 +81,7 @@ namespace chapter4
 	void demo_operator();
 
 	void demo_exception();
+
+	void demo_uuid();
 }
 BOOST_TYPEOF_REGISTER_TYPE(chapter4::ex::demo_class) // Ïò typeof ¿â×¢²áÀà
