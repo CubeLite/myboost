@@ -35,4 +35,19 @@ void chapter5::demo_lexical_cast()
 
 	cout << lexical_cast<string>(0.618) << endl;
 	cout << lexical_cast<string>(0x10) << endl;
+
+	try
+	{
+		int xx = lexical_cast<int>("hello world");
+	}
+	catch (bad_lexical_cast& e)
+	{
+		cout << e.what() << endl;
+	}
+
+	assert(NumValid<double>("3.14"));
+	assert(!NumValid<int>("3.14"));
+	assert(NumValid<int>("65535"));
+
+	cout << lexical_cast<string>(LexicalClazz()) << endl;
 }
