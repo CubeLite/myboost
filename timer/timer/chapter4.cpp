@@ -26,7 +26,7 @@ chapter4::Point::Point(int x, int y, int z): x(x), y(y), z(z)
 
 void chapter4::Point::Print() const
 {
-	cout << "Point(" << x << "," << y << "," << z << ")";
+	cout << "Point(" << x << "," << y << "," << z << ")" << endl;
 }
 
 
@@ -146,4 +146,33 @@ void chapter4::demo_operator()
 
 	assert(p1 == p4);
 	assert(p0 != p1);
+
+	vector<Point> v = (list_of(p0), p1, p2, p3, p4);
+	BOOST_AUTO(pos, std::find(v.begin(), v.end(), Point(1,2,3)));
+
+	pos->Print();
+	(p1+p2).Print();
+	assert((p2-p2) == p0);
+}
+
+void chapter4::demo_exception()
+{
+	try
+	{
+		try
+		{
+			throw MyException() << ErrNo(10);
+		}
+		catch (MyException& e)
+		{
+			cout << *get_error_info<ErrNo>(e) << endl;
+			cout << e.what() << endl;
+			e << ErrStr("other info");
+			throw;
+		}
+	}	
+	catch (MyException& e)
+	{
+		cout << *get_error_info<ErrStr>(e) << endl;
+	}
 }

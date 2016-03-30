@@ -2,6 +2,7 @@
 #include <boost/noncopyable.hpp>
 #include <boost/utility.hpp>
 #include <boost/operators.hpp>
+#include <boost/exception/all.hpp>
 
 #include <boost/typeof/typeof.hpp>
 #include BOOST_TYPEOF_INCREMENT_REGISTRATION_GROUP()
@@ -12,8 +13,9 @@ namespace chapter4
 	{};
 
 	class Point 
-		: boost::less_than_comparable<Point>
-		, boost::equality_comparable<Point>
+		//: boost::less_than_comparable<Point>
+		//, boost::equality_comparable<Point>
+		: boost::totally_ordered<Point, boost::additive<Point> >
 	{
 	private:
 		int x;
@@ -34,6 +36,21 @@ namespace chapter4
 		{
 			return pt1.x == pt2.x && pt1.y == pt2.y && pt1.z == pt2.z;
 		}
+
+		Point& operator+=(const Point& r)
+		{
+			x += r.x;
+			y += r.y;
+			z += r.z;
+			return *this;
+		}
+		Point& operator-=(const Point& r)
+		{
+			x -= r.x;
+			y -= r.y;
+			z -= r.z;
+			return *this;
+		}
 	};
 
 	namespace ex
@@ -45,6 +62,14 @@ namespace chapter4
 		};
 	}
 
+	struct MyException
+		: virtual std::exception
+		, virtual boost::exception
+	{};
+
+	typedef boost::error_info<struct tag_err_no, int> ErrNo;
+	typedef boost::error_info<struct tag_err_str, std::string> ErrStr;
+
 	void demo_typeof_auto();
 
 	void demo_optional();
@@ -54,5 +79,7 @@ namespace chapter4
 	void demo_tribool();
 
 	void demo_operator();
+
+	void demo_exception();
 }
 BOOST_TYPEOF_REGISTER_TYPE(chapter4::ex::demo_class) // Ïò typeof ¿â×¢²áÀà

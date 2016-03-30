@@ -17,7 +17,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	//chapter4::demo_optional();
 	//chapter4::demo_assign();
 	//chapter4::demo_tribool();
-	chapter4::demo_operator();
+	//chapter4::demo_operator();
+	chapter4::demo_exception();
 
 	return 0;
 }
