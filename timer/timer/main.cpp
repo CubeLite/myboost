@@ -22,7 +22,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	//chapter4::demo_uuid();
 
 
-	chapter5::demo_lexical_cast();
+	//chapter5::demo_lexical_cast();
+	chapter5::demo_format();
 
 	return 0;
 }
