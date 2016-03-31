@@ -12,6 +12,7 @@
 #include <boost/swap.hpp>
 #include <boost/logic/tribool.hpp>
 #include <boost/logic/tribool_io.hpp>
+#include <boost/typeof/typeof.hpp>
 
 #include <boost/lexical_cast.hpp>
 #include <boost/format.hpp>
@@ -134,4 +135,34 @@ void chapter5::demo_string_algo_find()
 
 	rge = find_first(str, "samus"); // can't find
 	cout << fmt %rge %(rge.begin() - str.begin()) << endl;
+}
+
+void chapter5::demo_string_algo_split()
+{
+	string str = "Samus,Link.Zelda::Mario-Luigi+zelda";
+
+	deque<string> d;
+	ifind_all(d, str, "zELDA");
+	assert(d.size() == 2);
+	for (BOOST_AUTO(pos, d.begin()); pos != d.end(); ++pos)
+	{
+		cout << "[" << *pos << "] " ;
+	}
+	cout << endl;
+
+	list<iterator_range<string::iterator> > li; // list<string> li; // is also ok
+	split(li, str, is_any_of(",.:-+"));
+	for (BOOST_AUTO(pos, li.begin()); pos != li.end(); ++pos)
+	{
+		cout << "[" << *pos << "] " ;
+	}
+	cout << endl;
+
+	li.clear();
+	split(li, str, is_any_of(".:-"), token_compress_on);
+	for (BOOST_AUTO(pos, li.begin()); pos != li.end(); ++pos)
+	{
+		cout << "[" << *pos << "] " ;
+	}
+	cout << endl;
 }

@@ -35,4 +35,6 @@ namespace chapter5
 	void demo_string_algo_trim();
 
 	void demo_string_algo_find();
+
+	void demo_string_algo_split();
 }
