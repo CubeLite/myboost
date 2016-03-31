@@ -13,6 +13,8 @@
 #include <boost/logic/tribool.hpp>
 #include <boost/logic/tribool_io.hpp>
 #include <boost/typeof/typeof.hpp>
+#include <boost/assign/list_of.hpp>
+using namespace boost::assign;
 
 #include <boost/lexical_cast.hpp>
 #include <boost/format.hpp>
@@ -165,4 +167,19 @@ void chapter5::demo_string_algo_split()
 		cout << "[" << *pos << "] " ;
 	}
 	cout << endl;
+}
+
+void chapter5::demo_string_algo_join()
+{
+	vector<string> v = list_of("Samus")("Link")("Zelda")("Mario");
+	cout << join(v, "+") << endl;
+
+	struct is_contains_a
+	{
+		bool operator() (const string& x)
+		{
+			return contains(x, "a");
+		}
+	};
+	cout << join_if(v, "**", is_contains_a());
 }
