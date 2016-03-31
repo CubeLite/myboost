@@ -94,3 +94,17 @@ void chapter5::demo_string_algo()
 
 	assert(all(strx2.substr(0, 5), is_lower()));
 }
+
+void chapter5::demo_string_algo_trim()
+{
+	format fmt("|%s|\n");
+
+	string str = "   samus aran    ";
+	cout << fmt %trim_copy(str) << endl;
+	cout << fmt %trim_left_copy(str) << endl;
+
+	string str2 = "2010 Happy new Year!!!";
+	cout << fmt %trim_left_copy_if(str2, is_digit());
+	cout << fmt %trim_right_copy_if(str2, is_punct());
+	cout << fmt %trim_copy_if(str2, is_punct() || is_digit() || is_space());
+}
