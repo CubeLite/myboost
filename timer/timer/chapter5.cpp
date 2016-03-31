@@ -108,3 +108,30 @@ void chapter5::demo_string_algo_trim()
 	cout << fmt %trim_right_copy_if(str2, is_punct());
 	cout << fmt %trim_copy_if(str2, is_punct() || is_digit() || is_space());
 }
+
+void chapter5::demo_string_algo_find()
+{
+	format fmt("|%s|. pos = %d\n");
+
+	string str = "Long long ago, there was a king.";
+
+	iterator_range<string::iterator> rge;
+
+	rge = find_first(str, "long");
+	cout << fmt %rge %(rge.begin() - str.begin()) << endl;
+
+	rge = ifind_first(str, "long");
+	cout << fmt %rge %(rge.begin() - str.begin()) << endl;
+
+	rge = find_nth(str, "ng", 2);
+	cout << fmt %rge %(rge.begin() - str.begin()) << endl;
+
+	rge = find_head(str, 4);
+	cout << fmt %rge %(rge.begin() - str.begin()) << endl;
+
+	rge = find_tail(str, 5);
+	cout << fmt %rge %(rge.begin() - str.begin()) << endl;
+
+	rge = find_first(str, "samus"); // can't find
+	cout << fmt %rge %(rge.begin() - str.begin()) << endl;
+}
