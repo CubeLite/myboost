@@ -243,3 +243,25 @@ void chapter5::demo_xpressive_search()
 	}
 	assert(!regex_search("error message", reg));
 }
+
+void chapter5::demo_xpressive_replace()
+{
+	string str("readme.txt");
+	sregex reg1 = sregex::compile("(.*)(me)");  // find, 0:readme, 1:read, 2:me
+	sregex reg2 = sregex::compile("(t)(.)(t)"); // find, 0:txt, 1:t, 2:x, 3:t
+
+	cout << regex_replace(str, reg1, "manual") << endl;
+	// manual.txt
+
+	cout << regex_replace(str, reg1, "$1you") << endl; // $N 引用第N个子表达式
+	// readyou.txt
+
+	cout << regex_replace(str, reg1, "$&$&") << endl; // $& 引用全匹配
+	// readmereadme.txt
+
+	cout << regex_replace(str, reg2, "$1N$3") << endl;
+	// readme.tNt
+
+	cout << regex_replace(str, reg2, "$1$3") << endl;
+	// readme.tt
+}

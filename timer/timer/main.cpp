@@ -31,7 +31,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	//chapter5::demo_string_algo_join();
 	//chapter5::demo_tokenizer();
 	//chapter5::demo_xpressive();
-	chapter5::demo_xpressive_search();
+	//chapter5::demo_xpressive_search();
+	chapter5::demo_xpressive_replace();
 
 	return 0;
 }

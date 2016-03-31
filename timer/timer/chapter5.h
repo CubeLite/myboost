@@ -52,4 +52,5 @@ namespace chapter5
 
 	void demo_xpressive();
 	void demo_xpressive_search();
+	void demo_xpressive_replace();
 }
