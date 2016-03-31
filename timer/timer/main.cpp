@@ -28,7 +28,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	//chapter5::demo_string_algo_trim();
 	//chapter5::demo_string_algo_find();
 	//chapter5::demo_string_algo_split();
-	chapter5::demo_string_algo_join();
+	//chapter5::demo_string_algo_join();
+	chapter5::demo_tokenizer();
 
 	return 0;
 }

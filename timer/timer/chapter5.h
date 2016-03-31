@@ -1,5 +1,8 @@
 #include "stdafx.h"
 #include <boost/lexical_cast.hpp>
+#include <boost/typeof/typeof.hpp>
+#include <boost/assign/list_of.hpp>
+using namespace boost::assign;
 
 namespace chapter5
 {
@@ -35,4 +38,15 @@ namespace chapter5
 	void demo_string_algo_find();
 	void demo_string_algo_split();
 	void demo_string_algo_join();
+
+	template<typename T>
+	void printToken(T &tok)
+	{
+		for (BOOST_AUTO(pos, tok.begin()); pos != tok.end(); ++pos)
+		{
+			cout << "[" << *pos << "]";
+		}
+		cout << endl;
+	}
+	void demo_tokenizer();
 }

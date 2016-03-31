@@ -12,13 +12,12 @@
 #include <boost/swap.hpp>
 #include <boost/logic/tribool.hpp>
 #include <boost/logic/tribool_io.hpp>
-#include <boost/typeof/typeof.hpp>
-#include <boost/assign/list_of.hpp>
-using namespace boost::assign;
+
 
 #include <boost/lexical_cast.hpp>
 #include <boost/format.hpp>
 #include <boost/algorithm/string.hpp>
+#include <boost/tokenizer.hpp>
 using namespace boost;
 
 using namespace std;
@@ -182,4 +181,22 @@ void chapter5::demo_string_algo_join()
 		}
 	};
 	cout << join_if(v, "**", is_contains_a());
+}
+
+void chapter5::demo_tokenizer()
+{
+	string str("Link raise the master-sword.");
+
+	tokenizer<> tok(str);
+
+	for (BOOST_AUTO(pos, tok.begin()); pos != tok.end(); ++pos)
+	{
+		cout << *pos << endl;
+	}
+
+	string str2 = "id,100,name,\"mario\"";
+
+	escaped_list_separator<char> sep;
+	tokenizer<escaped_list_separator<char> > tok2(str2, sep);
+	printToken(tok2);
 }
