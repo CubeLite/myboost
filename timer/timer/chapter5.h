@@ -49,4 +49,7 @@ namespace chapter5
 		cout << endl;
 	}
 	void demo_tokenizer();
+
+	void demo_xpressive();
+	void demo_xpressive_search();
 }

@@ -20,6 +20,9 @@
 #include <boost/tokenizer.hpp>
 using namespace boost;
 
+#include <boost/xpressive/xpressive_dynamic.hpp>
+using namespace boost::xpressive;
+
 using namespace std;
 using namespace chapter5;
 
@@ -199,4 +202,44 @@ void chapter5::demo_tokenizer()
 	escaped_list_separator<char> sep;
 	tokenizer<escaped_list_separator<char> > tok2(str2, sep);
 	printToken(tok2);
+}
+
+void chapter5::demo_xpressive()
+{
+	cregex reg = cregex::compile("a.c");
+	assert(regex_match("abc", reg));
+	assert(regex_match("a+c", reg));
+
+	assert(!regex_match("ac", reg));
+	assert(!regex_match("adb", reg));
+
+	cregex reg2 = cregex::compile("\\d{6}((1|2)\\d{3})((0|1)\\d)([0-3]\\d)(\\d{3}(X|\\d))", icase);
+
+	cmatch what;
+	assert(regex_match("999555197001019999", what, reg2));
+	for (BOOST_AUTO(pos, what.begin()); pos != what.end(); ++pos)
+	{
+		cout << "[" << *pos << "]";
+	}
+	cout << endl;
+
+	cout << "date:" << what[1] << what[3] << what[5] << endl;
+}
+
+void chapter5::demo_xpressive_search()
+{
+	char* str = "there is a POWER-suit item";
+	cregex reg = cregex::compile("(power)-(.{4})", icase);
+
+	assert(regex_search(str, reg));
+
+	cmatch what;
+	regex_search(str, what, reg);
+	assert(what.size() == 3);
+
+	for (BOOST_AUTO(pos, what.begin()); pos != what.end(); ++pos)
+	{
+		cout << *pos << endl;
+	}
+	assert(!regex_search("error message", reg));
 }
