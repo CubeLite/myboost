@@ -26,6 +26,7 @@ using namespace boost::xpressive;
 #define BOOST_ENABLE_ASSERT_HANDLER
 #include <boost/assert.hpp>
 
+
 using namespace std;
 using namespace chapter6;
 
@@ -50,4 +51,10 @@ double func(int x)
 void chapter6::demo_boost_assertion()
 {
 	func(0);
+}
+
+void chapter6::demo_boost_static_assertion()
+{
+	cout << my_min((short)1, (short)3);
+	//cout << my_min(1L, 3L); // 编译期执行检查，放开直接编译失败
 }

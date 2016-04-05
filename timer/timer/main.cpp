@@ -35,7 +35,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	//chapter5::demo_xpressive_search();
 	//chapter5::demo_xpressive_replace();
 
-	chapter6::demo_boost_assertion();
+	//chapter6::demo_boost_assertion();
+	chapter6::demo_boost_static_assertion();
 
 	return 0;
 }
