@@ -3,6 +3,7 @@
 #include "chapter2.h"
 #include "chapter4.h"
 #include "chapter5.h"
+#include "chapter6.h"
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -32,7 +33,9 @@ int _tmain(int argc, _TCHAR* argv[])
 	//chapter5::demo_tokenizer();
 	//chapter5::demo_xpressive();
 	//chapter5::demo_xpressive_search();
-	chapter5::demo_xpressive_replace();
+	//chapter5::demo_xpressive_replace();
+
+	chapter6::demo_boost_assertion();
 
 	return 0;
 }
