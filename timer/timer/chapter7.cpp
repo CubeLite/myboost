@@ -12,7 +12,10 @@
 #include <boost/swap.hpp>
 #include <boost/logic/tribool.hpp>
 #include <boost/logic/tribool_io.hpp>
+#include <boost/typeof/std/utility.hpp>
 
+#include <boost/assign.hpp>
+using namespace boost::assign;
 
 #include <boost/lexical_cast.hpp>
 #include <boost/format.hpp>
@@ -20,6 +23,8 @@
 #include <boost/tokenizer.hpp>
 #include <boost/array.hpp>
 #include <boost/dynamic_bitset.hpp>
+#include <boost/unordered_set.hpp>
+#include <boost/unordered_map.hpp>
 using namespace boost;
 
 #include <boost/xpressive/xpressive_dynamic.hpp>
@@ -46,4 +51,16 @@ void chapter7::demo_dynamic_bitset()
 	dbx[0] &= 1;
 	dbx[1] ^= 1;
 	cout << dbx << endl;
+}
+
+void chapter7::demo_unorder_set()
+{
+	unordered_set<int> us = (list_of(1),2,3,4,5);
+	for (BOOST_AUTO(p, us.begin()); p != us.end(); ++p)
+	{
+		cout << *p << endl;
+	}
+
+	BOOST_AUTO(p, us.find(5));
+	cout << *p << endl;
 }
