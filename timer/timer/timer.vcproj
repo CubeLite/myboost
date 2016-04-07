@@ -195,6 +195,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\chapter6_test.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\chapter6_test_main.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\main.cpp"
 				>
 			</File>
