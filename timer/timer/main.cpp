@@ -40,7 +40,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	//chapter6::demo_boost_static_assertion();
 
 	//chapter7::demo_dynamic_bitset();
-	chapter7::demo_unorder_set();
+	//chapter7::demo_unorder_set();
+	chapter7::demo_bimap();
 
 	return 0;
 }

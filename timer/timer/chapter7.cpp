@@ -25,7 +25,10 @@ using namespace boost::assign;
 #include <boost/dynamic_bitset.hpp>
 #include <boost/unordered_set.hpp>
 #include <boost/unordered_map.hpp>
+#include <boost/bimap.hpp>
+#include <boost/bimap/multiset_of.hpp>
 using namespace boost;
+using namespace boost::bimaps;
 
 #include <boost/xpressive/xpressive_dynamic.hpp>
 using namespace boost::xpressive;
@@ -63,4 +66,26 @@ void chapter7::demo_unorder_set()
 
 	BOOST_AUTO(p, us.find(5));
 	cout << *p << endl;
+}
+
+void chapter7::demo_bimap()
+{
+	bimap<int, string> bm;
+
+	bm.left.insert(make_pair(1, "111"));
+	bm.left.insert(make_pair(2, "222"));
+
+	bm.right.insert(make_pair("string", 10));
+	bm.right.insert(make_pair("bimap", 20));
+
+	for (BOOST_AUTO(pos, bm.left.begin()); pos != bm.left.end(); ++pos)
+	{
+		cout << "left[" << pos->first << "]=" << pos->second << endl;
+	}
+
+	// muliset_of is located at namespace boost::bimaps
+	bimap<multiset_of<int>, multiset_of<string> > bm2;
+
+	bimap<tagged<int, struct id>, tagged<string, struct name> > bmtag;
+	bmtag.by<id>().insert(make_pair(1, "samus"));
 }
