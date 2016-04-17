@@ -8,11 +8,7 @@
 #include <string>
 #include <cstdlib>
 
-#include <boost/optional.hpp>
-#include <boost/swap.hpp>
-#include <boost/logic/tribool.hpp>
-#include <boost/logic/tribool_io.hpp>
-#include <boost/typeof/std/utility.hpp>
+
 
 #include <boost/assign.hpp>
 using namespace boost::assign;
@@ -27,6 +23,7 @@ using namespace boost::assign;
 #include <boost/unordered_map.hpp>
 #include <boost/bimap.hpp>
 #include <boost/bimap/multiset_of.hpp>
+#include <boost/circular_buffer.hpp>
 using namespace boost;
 using namespace boost::bimaps;
 
@@ -88,4 +85,14 @@ void chapter7::demo_bimap()
 
 	bimap<tagged<int, struct id>, tagged<string, struct name> > bmtag;
 	bmtag.by<id>().insert(make_pair(1, "samus"));
+}
+
+
+void chapter7::demo_circular_buffer()
+{
+	circular_buffer<int> cb((list_of(1), 2, 3));
+	print_container(cb); // 1, 2, 3
+
+	cb.push_back(4);
+	print_container(cb); // 2, 3, 4
 }
