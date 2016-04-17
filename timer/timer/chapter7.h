@@ -29,4 +29,6 @@ namespace chapter7
 	void demo_circular_buffer();
 
 	void demo_tuple();
+
+	void demo_any();
 }

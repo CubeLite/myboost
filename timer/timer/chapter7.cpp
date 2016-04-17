@@ -27,6 +27,7 @@ using namespace boost::assign;
 #include <boost/tuple/tuple.hpp>
 #include <boost/tuple/tuple_comparison.hpp>
 #include <boost/tuple/tuple_io.hpp>
+#include <boost/any.hpp>
 using namespace boost;
 using namespace boost::bimaps;
 using namespace boost::tuples;
@@ -179,4 +180,12 @@ void chapter7::demo_tuple()
 
 	print_tuple(tx6);
 	visit_tuple(print_visitor(), tx6);
+}
+
+void chapter7::demo_any()
+{
+	any a(10);
+	a = string("hello");
+	string str = any_cast<string>(a);
+	cout << str << endl;
 }
