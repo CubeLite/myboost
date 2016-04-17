@@ -18,6 +18,8 @@ namespace chapter7
 		cout << "print container is done." << endl;
 	}
 
+	
+
 	void demo_dynamic_bitset();
 
 	void demo_unorder_set();
@@ -25,4 +27,6 @@ namespace chapter7
 	void demo_bimap();
 
 	void demo_circular_buffer();
+
+	void demo_tuple();
 }

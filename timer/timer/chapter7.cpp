@@ -24,8 +24,12 @@ using namespace boost::assign;
 #include <boost/bimap.hpp>
 #include <boost/bimap/multiset_of.hpp>
 #include <boost/circular_buffer.hpp>
+#include <boost/tuple/tuple.hpp>
+#include <boost/tuple/tuple_comparison.hpp>
+#include <boost/tuple/tuple_io.hpp>
 using namespace boost;
 using namespace boost::bimaps;
+using namespace boost::tuples;
 
 #include <boost/xpressive/xpressive_dynamic.hpp>
 using namespace boost::xpressive;
@@ -95,4 +99,84 @@ void chapter7::demo_circular_buffer()
 
 	cb.push_back(4);
 	print_container(cb); // 2, 3, 4
+}
+
+typedef tuple<int, double, string> Tuple3;
+Tuple3 func()
+{
+	return make_tuple(1, 2.1, "hello");
+}
+
+template<typename T>
+void print_tuple(const T& tuplex)
+{
+	cout << tuplex.get_head() << ',';
+	print_tuple(tuplex.get_tail());
+}
+void print_tuple(const boost::tuples::null_type&){}
+
+template<typename Visitor, typename Tuple>
+typename result_of<Visitor(Tuple&)>::type
+visit_tuple(Visitor v, const Tuple &t)
+{
+	v(t.get_head());
+	return visit_tuple(v, t.get_tail());
+}
+
+struct print_visitor
+{
+	typedef void result_type;
+	template<typename T>
+	result_type operator() (const T &t)
+	{
+		cout << t << ",";
+	}
+};
+
+template<>
+void visit_tuple<print_visitor, tuples::null_type>(print_visitor, const tuples::null_type&)
+{}
+
+void chapter7::demo_tuple()
+{
+	typedef tuple<int, string, double> my_tuple;
+	my_tuple t1;
+	my_tuple t2(1, "abc");
+	my_tuple t3 = t1;
+
+	assert(t1 == t3);
+	assert(t2 != t3);
+	assert(typeid(int) == typeid(tuples::element<0, my_tuple>::type));
+	assert(typeid(string) == typeid(tuples::element<1, my_tuple>::type));
+	cout << tuples::length<my_tuple>::value << endl;
+
+	int x = 10;
+	tuple<int&> t4(x);
+
+	tuple<int, double> t5 = make_tuple(1, 3.14);
+	assert(t5.get<0>() == 1);
+	assert(t5.get<1>() == 3.14);
+	assert(boost::get<0>(t5) == 1);
+
+	cout << t5 << endl; // (1 3.14)
+
+	cout << tuples::set_open('[') << tuples::set_close(']');
+	cout << tuples::set_delimiter(',');
+	cout << t5 << endl; // [1, 3.14]
+
+	int i;
+	double d;
+	string str;
+	boost::tie(i, d, str) = func();
+	cout << i << d << str << endl;
+
+	double dd;
+	boost::tie(tuples::ignore, dd, tuples::ignore) = func();
+	cout << dd << endl;
+
+	Tuple3 tx6 = func();
+	cout << tx6 << endl;
+
+	print_tuple(tx6);
+	visit_tuple(print_visitor(), tx6);
 }

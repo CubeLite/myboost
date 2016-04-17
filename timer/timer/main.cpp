@@ -42,7 +42,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	//chapter7::demo_dynamic_bitset();
 	//chapter7::demo_unorder_set();
 	//chapter7::demo_bimap();
-	chapter7::demo_circular_buffer();
+	//chapter7::demo_circular_buffer();
+	chapter7::demo_tuple();
 
 	return 0;
 }
