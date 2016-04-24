@@ -28,6 +28,7 @@ using namespace boost::assign;
 #include <boost/tuple/tuple_comparison.hpp>
 #include <boost/tuple/tuple_io.hpp>
 #include <boost/any.hpp>
+#include <boost/variant.hpp>
 using namespace boost;
 using namespace boost::bimaps;
 using namespace boost::tuples;
@@ -188,4 +189,25 @@ void chapter7::demo_any()
 	a = string("hello");
 	string str = any_cast<string>(a);
 	cout << str << endl;
+}
+
+void chapter7::demo_variant()
+{
+	typedef variant<int, double, string> var_t;
+	var_t v;
+	assert(v.type() == typeid(int));
+	assert(v.which() == 0); // v现在持有第一个类型的元素
+
+	v = "hello world";
+	cout << *boost::get<string>(&v) << endl;
+	cout << v.which() << endl;
+
+	try
+	{
+		cout << boost::get<double>(v) << endl;
+	}
+	catch (boost::bad_get &e)
+	{
+		cout << e.what() << endl;
+	}
 }

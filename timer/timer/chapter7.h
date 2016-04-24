@@ -31,4 +31,6 @@ namespace chapter7
 	void demo_tuple();
 
 	void demo_any();
+
+	void demo_variant();
 }
