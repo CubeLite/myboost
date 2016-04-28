@@ -5,6 +5,7 @@
 #include "chapter5.h"
 #include "chapter6.h"
 #include "chapter7.h"
+#include "chapter11.h"
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -45,7 +46,9 @@ int _tmain(int argc, _TCHAR* argv[])
 	//chapter7::demo_circular_buffer();
 	//chapter7::demo_tuple();
 	//chapter7::demo_any();
-	chapter7::demo_variant();
+	//chapter7::demo_variant();
+
+	chapter11::demo_result_of();
 
 	return 0;
 }

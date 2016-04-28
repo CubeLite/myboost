@@ -179,6 +179,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\chapter11.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\chapter2.cpp"
 				>
 			</File>
@@ -238,6 +242,10 @@
 			>
 			<File
 				RelativePath=".\chapter1.h"
+				>
+			</File>
+			<File
+				RelativePath=".\chapter11.h"
 				>
 			</File>
 			<File
