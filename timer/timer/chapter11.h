@@ -5,6 +5,7 @@
 #include <boost/logic/tribool_io.hpp>
 #include <boost/typeof/std/utility.hpp>
 #include <boost/utility/result_of.hpp>
+#include <boost/ref.hpp>
 
 namespace chapter11
 {
@@ -15,4 +16,6 @@ namespace chapter11
 	}
 
 	void demo_result_of();
+
+	void demo_ref();
 }

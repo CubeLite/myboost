@@ -48,7 +48,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	//chapter7::demo_any();
 	//chapter7::demo_variant();
 
-	chapter11::demo_result_of();
+	//chapter11::demo_result_of();
+	chapter11::demo_ref();
 
 	return 0;
 }
