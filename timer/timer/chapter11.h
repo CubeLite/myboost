@@ -15,7 +15,17 @@ namespace chapter11
 		return f(param);
 	}
 
+	struct Tag
+	{
+		int add(int a, int b)
+		{
+			return a+b;
+		}
+	};
+
 	void demo_result_of();
 
 	void demo_ref();
+
+	void demo_bind();
 }
