@@ -28,4 +28,6 @@ namespace chapter11
 	void demo_ref();
 
 	void demo_bind();
+
+	void demo_function();
 }

@@ -30,6 +30,7 @@ using namespace boost::assign;
 #include <boost/any.hpp>
 #include <boost/variant.hpp>
 #include <boost/bind.hpp>
+#include <boost/function.hpp>
 using namespace boost;
 using namespace boost::bimaps;
 using namespace boost::tuples;
@@ -87,4 +88,28 @@ void chapter11::demo_bind()
 	Tag tag;
 	cout << bind(&Tag::add, tag, _1, _2)(1, 2) << endl;
 	cout << bind(&Tag::add, &tag, _1, _2)(1, 2) << endl;
+}
+
+void chapter11::demo_function()
+{
+	function<int(int,int)> func;
+	assert(!func);
+
+	func = add;
+	if (func)
+	{
+		cout << func(10, 20) << endl;
+	}
+	func = 0;
+	assert(func.empty());
+	
+	Tag tag;
+
+	func = bind(&Tag::add, &tag, _1, _2);
+	cout << func(10, 20) << endl;
+
+	function<int(Tag&, int, int)> func2;
+	func2 = bind(&Tag::add, _1, _2, _3);
+	
+	cout << func2(tag, 10, 20) << endl;
 }

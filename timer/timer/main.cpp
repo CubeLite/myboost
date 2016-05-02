@@ -50,7 +50,8 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	//chapter11::demo_result_of();
 	//chapter11::demo_ref();
-	chapter11::demo_bind();
+	//chapter11::demo_bind();
+	chapter11::demo_function();
 
 	return 0;
 }
